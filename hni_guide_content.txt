@@ -1,0 +1,309 @@
+HNI Lead Sourcing Guide
+India Wealth Management | Verified Sources & Navigation Workflow
+Puretech Internet Private Limited | March 2026
+This guide provides a verified, chronological workflow to identify, profile and approach Ultra-HNI wealth management
+prospects in India with 100-1000 Cr+ in recent liquidity. All 23 sources have been cross-verified for accessibility as of March
+2026. Follow the 5 stages in order for maximum efficiency.
+Stage 1
+Identify the Liquidity Event — Signal Detection
+#
+Source
+Access
+Navigation Steps
+Data Obtained
+1
+BSE Bulk Deals
+bseindia.com/markets/equit
+y/EQReports/bulk_deals.as
+px
+Free
+1. Markets > Equity > Bulk Deals > select date
+2. Download CSV > filter Seller column for
+individual/promoter names
+3. Note stock name, quantity, and approximate rupee value
+of sale
+Promoter name + estimated liquidity quantum from stake
+sale
+2
+NSE Block Deals
+nseindia.com/market-data/
+block-deal
+Free
+1. Market Data > Block Deal > set date range
+2. Filter seller column > identify promoter-linked names
+3. Cross-reference with BSE data to confirm the individual
+Confirms identity + deal size for NSE-listed stocks
+3
+NSE Insider
+Disclosures
+nseindia.com/companies-li
+sting/corporate-filings-insid
+er-trading
+Free
+1. Companies > Corporate Filings > Insider Trading
+2. Search by company > filter by Promoter/Director role
+3. Download Form C/D filings > note transaction date,
+quantity, value
+Legally disclosed promoter trades with exact rupee value
+4
+Insider Screener
+insiderscreener.com/en/ind
+ia/insider-trading
+* Upgraded recommendation
+— replaces original SEBI link
+Freemium
+1. Filter: Role = Promoter, Direction = Sell, Value = large
+2. Sort by disclosed sale value > identify top sellers this
+month
+3. Set alerts for specific companies or individuals
+Aggregated BSE + NSE PIT disclosures in one feed —
+faster than raw exchange pages
+5
+BSE IPO Lock-in
+bseindia.com/markets/publi
+cIssues/IPOList.aspx
+Free
+1. Markets > Public Issues > IPO List > filter past 18 months
+2. Note listing date > add 6 months = promoter lock-in expiry
+3. Cross-reference company with MCA for promoter names
+Promoters whose lock-in has expired or is expiring =
+imminent liquidity
+6
+Tracxn
+tracxn.com
+Freemium
+1. Search sector + India > Recent Rounds > filter Series
+B/C/D+
+2. Click company > Founders tab > note founder names
+3. Check funding round size — larger rounds = secondary
+liquidity likely
+Startup founders with recent large funding = probable
+ESOP/secondary liquidity
+7
+Inc42 Funding
+inc42.com/startup-funding
+Free
+1. Filter by month > deals above $5M > read articles
+2. Note founder names quoted in the article
+3. Google name + 'secondary' or 'liquidity' for further context
+Named founders in recent India funding news
+Stage 2
+Verify Identity and Build Company Profile
+#
+Source
+Access
+Navigation Steps
+Data Obtained
+8
+MCA21
+mca.gov.in > MCA
+Services > View
+Company/LLP Master Data
+Free
+1. Enter company name > get CIN > click Directors tab
+2. Note DIN numbers for all directors/promoters
+3. Copy DIN > search Director Master Data for all
+associated companies
+Official director identity, DIN, date of appointment, all
+linked companies
+9
+Tofler
+tofler.in
+Freemium
+1. Search director name or company > open company page
+2. Directors tab > DIN, appointment history, other
+directorships
+3. Financials tab > check revenue, net worth, paid-up capital
+over 3 years
+Financial health proxy, full corporate portfolio,
+charges/loans against company
+10
+Zaubacorp
+zaubacorp.com
+Free
+1. Search director name > view list of all associated
+companies
+2. Note active vs struck-off > focus on active high-capital
+entities
+3. Check sectors across portfolio to understand wealth
+source diversity
+Full corporate web — all entities the individual controls or
+is associated with
+Stage 3
+Estimate Wealth Quantum and Confirm HNI Bracket
+#
+Source
+Access
+Navigation Steps
+Data Obtained
+11
+Hurun India Rich List
+hurunindia.com > Reports
+> India Rich List
+Free
+1. Browse or search by name, industry, or city
+2. Note net worth estimate, rank, and source of wealth
+description
+3. Cross-reference with Tofler financials for sanity check
+Published net worth estimate + wealth source + city of
+residence
+12
+Forbes India Rich List
+forbesindia.com/lists/rich-li
+st
+Free
+1. Browse list > search by name or scroll by industry
+2. Click profile > read wealth narrative, key companies,
+family mentions
+3. Note any family office or philanthropic activity mentioned
+Second-source wealth validation + editorial profile context
+13
+Zapkey
+zapkey.com > select city >
+Transactions tab
+* Buyer names on some
+transactions require paid report
+Freemium
+1. Select city (Mumbai/Bengaluru/Pune/Delhi) > filter value
+above Rs 5Cr
+2. Search by buyer name if known, or browse high-value
+recent transactions
+3. Note property address, transaction date, registered buyer
+name
+Real estate as wealth confirmation proxy. Rs 10Cr+
+purchase = confirmed liquid HNI
+14
+Propstack
+propstack.com
+Paid
+1. Contact for data access > filter by city + transaction value
++ buyer type
+2. Pull high-value transactions in target micro-markets
+(South Mumbai, Lutyens, Koramangala)
+3. Match buyer names to MCA director search
+Comprehensive registered transaction data — better for
+bulk discovery than Zapkey
+15
+IGR Maharashtra
+igrmaharashtra.gov.in >
+e-Search > Property
+Registration
+* Not useful for discovery —
+verification only
+Free
+1. Enter district + property type + date range
+2. Filter by consideration value > extract buyer name
+3. Use only to verify a specific transaction already found via
+Zapkey
+Government-source verification of property transaction.
+Use for confirmation only.
+Stage 4
+Build Personal Profile and News Context
+#
+Source
+Access
+Navigation Steps
+Data Obtained
+16
+ET Wealth
+economictimes.indiatimes.
+com/wealth
+Free
+1. Search individual's name > filter last 12 months
+2. Read articles > note any existing wealth manager, CA, or
+advisor mentions
+3. Check for quotes on investment philosophy, philanthropy,
+or liquidity plans
+News-based persona — what they publicly say about
+wealth, risk, and investments
+17
+Mint
+livemint.com > search
+name
+Free
+1. Search: [name] + 'family office' OR 'wealth' OR 'exits'
+2. Note any M&A;, business sale, or secondary transaction
+coverage
+3. Flag any lawyer/CA firms mentioned — these are your
+warm intro paths
+M&A; context, deal advisors named, family office signals
+18
+Business Standard
+business-standard.com >
+search name
+Free
+1. Markets section > search name + 'bulk deal' or 'stake
+sale'
+2. Read for board-level changes, acquisitions, or regulatory
+filings
+3. Cross-reference with BSE insider data for completeness
+Deal context, regulatory news, business milestones
+Stage 5
+Find Contact Path and Approach Channel
+#
+Source
+Access
+Navigation Steps
+Data Obtained
+19
+LinkedIn Sales
+Navigator
+business.linkedin.com/sale
+s-solutions/sales-navigator
+Paid
+1. Lead Search > Title: Founder/MD/Promoter > Geography:
+India > filter industry
+2. Open profile > check shared connections > identify 2nd
+degree paths
+3. Note current role, company, city, and any recent posts or
+activity
+Direct LinkedIn profile + mutual connection map for warm
+introduction
+20
+PMS Bazaar
+pmsbazaar.com > Top
+PMSes > Fund Manager
+directory
+Free
+1. Identify which PMS funds are active in your target's sector
+2. Note fund manager contact > reach out as a peer in
+wealth management
+3. Use fund manager as warm intro path to their HNI
+investor base
+PMS fund manager contacts — one layer upstream from
+HNI investors
+21
+YPO India
+ypo.org/regions/india
+Paid
+1. Find local chapter > attend as guest or through member
+referral
+2. Identify members — strict net worth threshold = verified
+UHNIs
+3. Request introduction through a mutual member
+Peer-verified UHNI network — highest quality warm intro
+environment
+22
+TiE India
+tie.org/chapters/india
+Freemium
+1. Events section > select chapter
+(Mumbai/Delhi/Bengaluru) > register
+2. Attend events > focus on Charter Members (senior tier)
+3. Follow up on LinkedIn within 24 hours of meeting
+Startup founder and senior entrepreneur network, lower
+barrier than YPO
+23
+CII Directory
+cii.in/MemberDirectory.asp
+x
+Free
+1. Search by industry or state > filter Large Enterprise
+2. Note company names > MCA search for directors
+3. Attend CII sector events to build contextual familiarity
+before outreach
+Large business owner contacts by sector — broader net
+than Hurun/Forbes
+Key: Sources marked with * have caveats noted. Recommended sequence — run Stages 1-3 first to confirm liquidity and wealth bracket before
+investing time in Stages 4-5. Ultra-HNIs rarely respond to cold outreach; the most effective channel is a warm introduction through their CA,
+M&A; lawyer (AZB, Cyril Amarchand, Khaitan), or existing PMS fund manager.

@@ -174,6 +174,55 @@ def update_enriched_row(target_name: str, enriched_dict: dict, bse_metadata: dic
     except Exception as e:
         console.print(f"[red]Error updating Enriched Data to Google Sheets:[/red] {e}")
 
+def check_if_lead_exists(target_name: str) -> bool:
+    """Checks if a Target Name already strictly exists in our Database."""
+    client, sheet_id = init_gspread()
+    if not client:
+        return False
+    try:
+        sheet = client.open_by_key(sheet_id).sheet1
+        try:
+            cell = sheet.find(target_name, in_column=2)
+            if cell:
+                return True
+        except gspread.exceptions.CellNotFound:
+            return False
+    except Exception:
+        return False
+    return False
+
+def append_direct_lead(target_name: str, enriched_dict: dict, company: str):
+    """Appends a truly new direct lead row into Google Sheets, skipping Phase 1 logic completely."""
+    client, sheet_id = init_gspread()
+    if not client:
+        return
+        
+    try:
+        sheet = client.open_by_key(sheet_id).sheet1
+        headers = get_or_create_headers(sheet)
+        
+        row_list = [""] * len(headers)
+        row_list[0] = "Inbound/Direct Search" # Col A (Source)
+        row_list[1] = target_name # Col B
+        row_list[2] = datetime.now().strftime("%Y-%m-%d") # Col C
+        row_list[3] = "Direct Lead Search" # Col D
+        row_list[6] = str(enriched_dict.get("Liquidity Event Description", "")) # Col G
+        row_list[7] = str(enriched_dict.get("Estimated Quantum (₹)", "")) # Col H
+        row_list[8] = str(enriched_dict.get("Active Companies / Directorships", company)) # Col I
+        row_list[9] = str(enriched_dict.get("Financial Health (Revenue/Capital)", "")) # Col J
+        row_list[10] = str(enriched_dict.get("Warm Intro Paths (Lawyers/CAs)", "")) # Col K
+        row_list[11] = str(enriched_dict.get("Profile Notes / Philanthropy", "")) # Col L
+        row_list[12] = str(enriched_dict.get("Source Verification Links", "")) # Col M
+        row_list[13] = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # Col N (Date Added)
+        row_list[14] = "Done" # Col O (Status)
+        row_list[16] = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # Col Q (Phase 2 Timestamp)
+        
+        sheet.append_row(row_list)
+        console.print(f"[bold green]✓ DIRECT INBOUND: New Lead '{target_name}' officially logged as 'Done' in Google Sheets![/bold green]")
+        
+    except Exception as e:
+        console.print(f"[red]Error saving Direct Lead Data to Google Sheets:[/red] {e}")
+
 def get_targets_from_sheet() -> list[dict]:
     """Reads Target Names and BSE context directly from Google Sheets to completely skip Phase 1 API quotas. Skips targets already marked 'Done'."""
     client, sheet_id = init_gspread()

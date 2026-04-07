@@ -57,24 +57,24 @@ CRITICAL INSTRUCTIONS:
 
 Your JSON dictionary must match EXACTLY these keys:
 "Target Name" : (The human name of the individual you are profiling)
-"Liquidity Event Description" : (Describe the recent block deal, bulk deal, secondary sale, M&A that created liquidity)
-"Estimated Quantum (₹)" : (The exact estimated quantum in Rupees or USD if mentioned)
-"Active Companies / Directorships" : (List active companies, roles, and CINs found)
-"Financial Health (Revenue/Capital)" : (Any mentioned financial health metrics like revenue or paid-up capital)
-"Warm Intro Paths (Lawyers/CAs)" : (Any lawyers, CA firms, wealth managers, M&A advisors, YPO networks, or mutual funds mentioned in the articles related to their deals. EXTREMELY IMPORTANT.)
-"Profile Notes / Philanthropy" : (Overall tone of the coverage, philanthropic activity, or family office mentions)
+"Liquidity Event Description" : (Describe the recent block deal, bulk deal, secondary sale, M&A that created liquidity. AT THE END OF THE STRING, ADD: '\n\n[Source: <url>]')
+"Estimated Quantum (₹)" : (The exact estimated quantum in Rupees or USD if mentioned. AT THE END OF THE STRING, ADD: '\n\n[Source: <url>]')
+"Active Companies / Directorships" : (List active companies, roles, and CINs found. AT THE END OF THE STRING, ADD: '\n\n[Source: <url>]')
+"Financial Health (Revenue/Capital)" : (Any mentioned financial health metrics like revenue or paid-up capital. AT THE END OF THE STRING, ADD: '\n\n[Source: <url>]')
+"Warm Intro Paths (Lawyers/CAs)" : (Any lawyers, CA firms, wealth managers, M&A advisors, YPO networks, or mutual funds mentioned in the articles related to their deals. EXTREMELY IMPORTANT. AT THE END OF THE STRING, ADD: '\n\n[Source: <url>]')
+"Profile Notes / Philanthropy" : (Overall tone of the coverage, philanthropic activity, or family office mentions. AT THE END OF THE STRING, ADD: '\n\n[Source: <url>]')
 "Source Verification Links" : (List all URLs that provided useful information)
 
 Example valid response:
 {{
     "Target Name": "Ashish Ramesh",
-    "Liquidity Event Description": "...",
-    "Estimated Quantum (₹)": "...",
-    "Active Companies / Directorships": "...",
-    "Financial Health (Revenue/Capital)": "...",
-    "Warm Intro Paths (Lawyers/CAs)": "...",
-    "Profile Notes / Philanthropy": "...",
-    "Source Verification Links": "..."
+    "Liquidity Event Description": "Sold 5% stake on BSE.\n\n[Source: https://bseindia.com/...]",
+    "Estimated Quantum (₹)": "₹50 Cr\n\n[Source: https://bseindia.com/...]",
+    "Active Companies / Directorships": "- TechCorp (Director)\n- Alpha (Founder)\n\n[Source: https://zaubacorp.com/...]",
+    "Financial Health (Revenue/Capital)": "TechCorp revenue is ₹500 Cr.\n\n[Source: https://tofler.in/...]",
+    "Warm Intro Paths (Lawyers/CAs)": "- Khaitan & Co (Legal Advisor)\n- Avendus (Banker)\n\n[Source: https://livemint.com/...]",
+    "Profile Notes / Philanthropy": "Known for funding education NGOs.\n\n[Source: https://forbes.com/...]",
+    "Source Verification Links": "https://zaubacorp.com/..., https://livemint.com/..."
 }}
 """
     return hni_prompt

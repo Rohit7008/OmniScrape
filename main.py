@@ -44,6 +44,63 @@ def normalize_value(val) -> str:
     else:
         return str(val).strip()
 
+def run_direct_pipeline(target_name: str, company: str, limit: int):
+    """Direct Inbound Lead search flow."""
+    from src.sheets import check_if_lead_exists, append_direct_lead
+    console.print(Panel.fit(f"[bold magenta]OmniScrape AI: DIRECT INBOUND MODE[/bold magenta]\nTarget: [white]{target_name}[/white]\nCompany: [white]{company}[/white]", border_style="yellow"))
+    logging.info(f"Starting DIRECT pipeline for: {target_name} | Company: {company}")
+    
+    if check_if_lead_exists(target_name):
+        console.print(f"[bold green]✓ Awesome! Lead '{target_name}' is already enriched in your Google Sheet database![/bold green]")
+        console.print("[dim]Skipping API searches to save credits.[/dim]")
+        return
+        
+    try:
+        console.print("\n[bold yellow]Phase 1:[/bold yellow] Searching Web (Tavily)")
+        # Make the company mandatory in the deal_context search
+        deal_ctx = f"Associated with company: {company}"
+        urls_to_scrape = get_hni_news(query=target_name, limit=limit, deal_context=deal_ctx)
+        
+        if not urls_to_scrape:
+            console.print("[red]No URLs found. Skipping.[/red]")
+            return
+            
+        for u in urls_to_scrape:
+            console.print(f"  - {u.get('url')}")
+            
+        console.print("\n[bold yellow]Phase 2:[/bold yellow] Deep Extracting Markdown (Firecrawl)")
+        scraped_data = scrape_urls(urls_to_scrape)
+        
+        if not scraped_data:
+            console.print("[red]Failed to extract any text. Skipping.[/red]")
+            return
+            
+        console.print("\n[bold yellow]Phase 3:[/bold yellow] Synthesizing Intelligence (Gemini 2.5 Flash)")
+        final_markdown = generate_report(scraped_data, target_name, "hni_lead", deal_ctx)
+        
+        import json
+        row_dict = json.loads(final_markdown)
+        for k, v in row_dict.items():
+            row_dict[k] = normalize_value(v)
+            
+        safe_name = row_dict.get('Target Name', target_name).replace(" ", "_").lower()
+        md_filename = f"output/{safe_name}_direct_report.md"
+        
+        md_content = f"# Inbound Lead Profile Extract: {row_dict.get('Target Name', target_name)}\n\n"
+        for k, v in row_dict.items():
+            md_content += f"### {k}\n{v}\n\n"
+        
+        os.makedirs("output", exist_ok=True)
+        with open(md_filename, "w", encoding="utf-8") as f:
+            f.write(md_content)
+            
+        console.print(f"[cyan]Logging new Inbound Lead straight to database...[/cyan]")
+        append_direct_lead(target_name, row_dict, company)
+        
+    except Exception as e:
+        console.print(f"[bold red]Pipeline Error for {target_name}:[/bold red] {e}\n")
+        logging.exception(f"Pipeline crashed for direct lead {target_name}")
+
 def run_pipeline(target_name: str, entity_type: str, limit: int, is_hni: bool = False, deal_context: str = "", bse_metadata: dict = None):
     """Runs the full intelligence pipeline for a specific target."""
     console.print(Panel.fit(f"[bold magenta]OmniScrape AI Pipeline[/bold magenta]\nTarget: [white]{target_name}[/white]\nType: [white]{entity_type}[/white]", border_style="cyan"))
@@ -140,9 +197,10 @@ def main():
     load_dotenv()
     
     parser = argparse.ArgumentParser(description="OmniScrape AI: Real-Time Web Intelligence")
-    parser.add_argument("--mode", type=str, choices=["standard", "hni_sourcing"], default="standard", help="Operating mode. 'hni_sourcing' runs Idea 1 automatically.")
+    parser.add_argument("--mode", type=str, choices=["standard", "hni_sourcing", "direct"], default="standard", help="Operating mode. 'hni_sourcing' runs Idea 1 automatically. 'direct' is for exact matched leads.")
     parser.add_argument("--phase2_only", action="store_true", help="Skip Phase 1 table generation and only run OmniScrape deep extraction")
-    parser.add_argument("--name", type=str, help="Name of the person or company to analyze (Standard Mode)")
+    parser.add_argument("--name", type=str, help="Name of the person or company to analyze")
+    parser.add_argument("--company", type=str, help="Company Name (Required for Direct Inbound Mode to ensure accurate matching)")
     parser.add_argument("--type", type=str, choices=["person", "company"], default="person", help="Type of entity (Standard Mode)")
     parser.add_argument("--limit", type=int, default=5, help="Max deep URLs to scrape (save Firecrawl credits)")
     parser.add_argument("--source", type=str, choices=["all", "bse", "nse", "insider_screener"], default="all", help="Target specific Phase 1 scraper. 'all' runs all available sources.")
@@ -215,6 +273,12 @@ def main():
             run_pipeline(target_name=name, entity_type="hni_lead", limit=args.limit, is_hni=True, deal_context=deal_ctx, bse_metadata=meta)
             time.sleep(5)
             
+    elif args.mode == "direct":
+        if not args.name or not args.company:
+            console.print("[red]Error: Both --name and --company are required for Direct Inbound Searches![/red]")
+            return
+        run_direct_pipeline(target_name=args.name, company=args.company, limit=args.limit)
+        
     else:
         # Standard Mode
         if not args.name:
